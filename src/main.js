@@ -9,18 +9,15 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
 navigator.mediaDevices.enumerateDevices()
   .then(function (devices) {
-    var txtDevices = '';
-
+    var texto = '';
     devices.forEach(function (device) {
-      txtDevices += (device.kind + ": " + device.label +
+      texto += (device.kind + ": " + device.label +
         " id = " + device.deviceId);
-      txtDevices += '\n';
+        texto += '\n';
     });
 
-    return txtDevices;
-  }).then(function(texto){
     document.getElementById('texto').innerText = texto;
   })
   .catch(function (err) {
-    txtDevices = (err.name + ": " + err.message);
+    document.getElementById('texto').innerText = (err.name + ": " + err.message);
   });
