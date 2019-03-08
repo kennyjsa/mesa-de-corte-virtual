@@ -13,7 +13,7 @@ navigator.mediaDevices.enumerateDevices()
     var texto = '';
     devices.forEach(function (device){
       if(device.kind =='videoinput') {
-      texto += '<option vslue="' +device.deviceId+'">' + (device.kind + ": " + device.label + " id = " + device.deviceId) + '</option>';
+      texto += '<option value="' +device.deviceId+'">' + (device.kind + ": " + device.label + " id = " + device.deviceId) + '</option>';
      } 
       
     });
