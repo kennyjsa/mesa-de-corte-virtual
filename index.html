@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia(constraints).
   then((stream) => {video.srcObject = stream});
 */
 </script>
-  <select onchange="setDevice()" id="texto"></select>
+  <select onchange="setDevice(this.value)" id="texto"></select>
 </body>
 <script src="src/main.js"></script>
 </html>
