@@ -5,3 +5,22 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     video.play();
   });
 }
+
+
+navigator.mediaDevices.enumerateDevices()
+  .then(function (devices) {
+    var txtDevices = '';
+
+    devices.forEach(function (device) {
+      txtDevices += (device.kind + ": " + device.label +
+        " id = " + device.deviceId);
+      txtDevices += '\n';
+    });
+
+    return txtDevices;
+  }).then(function(texto){
+    document.getElementById('texto').innerText = texto;
+  })
+  .catch(function (err) {
+    txtDevices = (err.name + ": " + err.message);
+  });
