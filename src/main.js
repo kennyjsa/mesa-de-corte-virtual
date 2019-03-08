@@ -1,12 +1,13 @@
-var video = document.getElementById('video');
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
-    video.src = window.URL.createObjectURL(stream);
-    video.play();
-  });
-}
+const constraints = {
+  video: true
+};
 
-/×
+const video = document.querySelector('video');
+
+navigator.mediaDevices.getUserMedia(constraints).
+  then((stream) => {video.srcObject = stream});
+
+
 navigator.mediaDevices.enumerateDevices()
   .then(function (devices) {
     var texto = '';
@@ -24,14 +25,11 @@ navigator.mediaDevices.enumerateDevices()
   });
 
 
-  function setDevice(e){
-    var myPreferredCameraDeviceId = e.target.value;
-    alert(myPreferredCameraDeviceId);
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: { deviceId: myPreferredCameraDeviceId } }).then(function (stream) {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-      });
-    }
+  function setDevice( myPreferredCameraDeviceId ){
+    
+    navigator.mediaDevices.getUserMedia( {video: {deviceaid: { exact: myPreferredCameraDeviceId } }} ).
+  then((stream) => {video.srcObject = stream});
+
+
   }
 ×/
