@@ -6,7 +6,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   });
 }
 
-
+/×
 navigator.mediaDevices.enumerateDevices()
   .then(function (devices) {
     var texto = '';
@@ -34,3 +34,4 @@ navigator.mediaDevices.enumerateDevices()
       });
     }
   }
+×/
