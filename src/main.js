@@ -11,7 +11,7 @@ navigator.mediaDevices.enumerateDevices()
   .then(function (devices) {
     var texto = '';
     devices.forEach(function (device) {
-      texto += '<b class="btn" onclick="setDevice("'+ device.deviceId +'")">' + (device.kind + ": " + device.label + " id = " + device.deviceId) + '</b>';
+      texto += '<b class="btn" onclick="setDevice(\''+ device.deviceId +'\')">' + (device.kind + ": " + device.label + " id = " + device.deviceId) + '</b>';
 
         texto += '\n';
     });
