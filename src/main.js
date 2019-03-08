@@ -32,4 +32,4 @@ navigator.mediaDevices.enumerateDevices()
 
 
   }
-×/
+
