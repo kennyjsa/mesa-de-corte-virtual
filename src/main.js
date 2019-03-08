@@ -11,7 +11,7 @@ navigator.mediaDevices.getUserMedia(constraints).
 
 navigator.mediaDevices.enumerateDevices()
   .then(function (devices) {
-    var texto = '';
+    var texto = '<option>Selecione... </option>';
     devices.forEach(function (device){
       if(device.kind =='videoinput') {
       texto += '<option value="' +device.deviceId+'">' + (device.kind + ": " + device.label + " id = " + device.deviceId) + '</option>';
@@ -29,7 +29,17 @@ navigator.mediaDevices.enumerateDevices()
   function setDevice( myPreferredCameraDeviceId ){
     //alert(myPreferredCameraDeviceId);
     navigator.mediaDevices.getUserMedia( {video: {deviceId: { exact: myPreferredCameraDeviceId } }} ).
-  then((stream) => {video.srcObject = stream});
+  then((stream) => {
+      if (window.stream) {
+        window.stream.getTracks().forEach(function(track) {
+      track.stop();
+
+    });
+
+  }
+      video.srcObject = stream;
+      Windows.stream = stream;
+    });
 
 
   }
