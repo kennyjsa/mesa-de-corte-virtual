@@ -26,7 +26,7 @@ navigator.mediaDevices.enumerateDevices()
 
 
   function setDevice( myPreferredCameraDeviceId ){
-    alert(myPreferredCameraDeviceId);
+    //alert(myPreferredCameraDeviceId);
     navigator.mediaDevices.getUserMedia( {video: {deviceId: { exact: myPreferredCameraDeviceId } }} ).
   then((stream) => {video.srcObject = stream});
 
