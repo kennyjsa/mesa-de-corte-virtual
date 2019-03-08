@@ -24,7 +24,9 @@ navigator.mediaDevices.enumerateDevices()
   });
 
 
-  function setDevice(myPreferredCameraDeviceId){
+  function setDevice(e){
+    var myPreferredCameraDeviceId = e.target.value;
+    alert(myPreferredCameraDeviceId);
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: { deviceId: myPreferredCameraDeviceId } }).then(function (stream) {
         video.src = window.URL.createObjectURL(stream);
