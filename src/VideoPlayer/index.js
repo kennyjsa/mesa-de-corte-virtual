@@ -11,8 +11,9 @@ class VideoPlayer extends Component {
   componentDidMount() {
     ipcRenderer.on('execute-transmition-reply', (event, arg) => {
       this.setState({ item: arg });
-      this.setDevice(arg.deviceId);
-
+      console.log(arg)
+      if(arg && arg.deviceId)
+        this.setDevice(arg.deviceId);
     })
 
   }
@@ -51,15 +52,15 @@ class VideoPlayer extends Component {
 
   renderCamera = () => {
     return (
-      <div>
-        {this.state.srcObject && <video autoPlay src={this.state.srcObject}></video>}
-      </div>
+      <video autoPlay src={this.state.srcObject}></video>
     );
   }
 
   render() {
     const { item } = this.state;
     
+    if(!item) return null;
+
     return (
       <div className="video-player">
         {item.type === "video" && this.renderVideo()}

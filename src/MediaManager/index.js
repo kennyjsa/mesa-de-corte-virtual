@@ -10,19 +10,29 @@ class VideoPlayer extends Component {
   
   state={
     primary: null,
+    secondary: null,
+    fundoPretoVisible: false
   }
   
   fade=()=>{
-    this.setPrimary();
-  }
+    var newPrimary=this.props.secondary;
+    var newSecondary=this.props.primary || this.props.secondary;
 
-  setPrimary(){
-    var newSecondary=this.state.primary;
+    this.popupExecute(newPrimary);
     
-    this.setState({primary: this.props.secondary});
-    this.popupExecute(this.props.secondary);
-    
+    this.setState({
+      primary: newPrimary,
+      secondary: newSecondary
+    });
+
+    this.props.setPrimary(newPrimary);
     this.props.setSecondary(newSecondary);
+  }
+  fundoPreto=()=>{
+    this.setState({ fundoPretoVisible:!this.state.fundoPretoVisible }, ()=>{
+      this.popupExecute(this.state.fundoPretoVisible?{}:this.state.primary);
+
+    })
   }
 
   
@@ -31,7 +41,6 @@ class VideoPlayer extends Component {
   popupExecute=(item)=>{
     console.log('execute-transmition', item)
     ipcRenderer.send('execute-transmition', item) // prints "pong"
-
   }
   
   
@@ -40,7 +49,9 @@ class VideoPlayer extends Component {
 
   renderControls = () => {
     return (
-      <div style={{ width: '33%' }}>
+      <div className="controls" style={{ width: '120px' }}>
+        <Button onClick={this.fundoPreto}>Fundo Preto</Button>
+        <br/><br/><br/>
         <Button onClick={this.fade}>Fade</Button>
       </div>
     );
@@ -49,16 +60,16 @@ class VideoPlayer extends Component {
   renderSecondary = () => {
     const {secondary} = this.props;
     return (
-      <div style={{ width: '33%' }}>
+      <div className="media" style={{ width: '100%' }}>
         {secondary && <Thumb item={secondary} />}
       </div>
     );
   }
 
   renderPrimary = () => {
-    const {primary} = this.state;
+    const {primary} = this.props;
     return (
-      <div style={{ width: '33%' }}>
+      <div className="media" style={{ width: '100%' }}>
         {primary && <Thumb item={primary} />}
       </div>
     );

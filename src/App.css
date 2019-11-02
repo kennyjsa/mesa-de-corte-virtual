@@ -55,23 +55,57 @@
 }
 
 
-.play-list{
-  background-color: #282c34;
+.play-list {
+  background: #282c34;
+  border: 1px #111 solid;
+  clear: both;
+  height: 230px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
-.play-list .thumb{
+.play-list .thumb {
+  background: #fff;
   border: #ccc 1px solid;
   border-radius: 6px;
+  margin:0.2em;
+}
+.play-list .select{
+  padding: 6px;
   float: left;
   width: 180px;
   height: 180px;
+
+  margin: 2px;
+  
 }
 
+.play-list .select.secondary {
+  background: red;
+}
+
+.play-list .select.primary {
+  background: green;
+}
+
+
+.thumb{
+  border: #ccc 1px solid;
+  border-radius: 6px;
+  height: auto;
+  position: relative;
+}
 .thumb video{
   width: 100%;
   height: auto;
 }
 
-.thumb img{
+.thumb img {
   width: 100%;
   height: auto;
+}
+.no-thumb{
+  background: #61dafb;
+}
+.no-thumb img{
+  display: none;
 }

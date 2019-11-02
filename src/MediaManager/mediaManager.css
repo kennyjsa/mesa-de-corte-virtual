@@ -3,16 +3,17 @@
     background-color: #666666;
     min-height: 380px;
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.media-manager>div{
-    float: left;
+.media-manager .controls{
+    background: blue;
+    text-align: center;
 }
 
-.media-manager .thumb{
-    border: #ccc 1px solid;
-    border-radius: 6px;
-    float: left;
-    width: 380px;
-    height: 180px;
-  }
+.media-manager .media{
+    background: red;
+}
+
+

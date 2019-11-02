@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Dialog } from "@blueprintjs/core";
-import { Select } from "@blueprintjs/select";
+ 
 
 const { dialog } = require('electron').remote;
 
@@ -25,11 +25,20 @@ class SelectMedia extends Component {
 
     if (!files) return;
 
-    var medias = files.map(x => ({
-      key: controle++,
-      type: "video",
-      path: x
-    }));
+    
+  
+
+
+    var medias = files.map(x => {
+
+      const media = {
+        key: controle++,
+        type: "video",
+        path: x
+      };
+
+      return media;
+    });
 
     this.props.onAddMedia(medias);
   }

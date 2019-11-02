@@ -3,7 +3,8 @@ import VideoThumbnail from 'react-video-thumbnail';
 
 class Thumb extends Component {
   state = {
-    srcObject: null
+    srcObject: null,
+    videoThumb: false
   }
   componentDidMount() {
     const { item } = this.props;
@@ -42,10 +43,14 @@ class Thumb extends Component {
 
     return (
       <div>
-        {this.getFileName(item.path)}
+        <div>{this.getFileName(item.path)}</div>
+        {!item.thumbnail && 
         <VideoThumbnail
           videoUrl={item.path}
+          thumbnailHandler={(thumbnail) => item.thumbnail = thumbnail}
         />
+        }
+        {!!item.thumbnail && <img src={item.thumbnail} />}
       </div>
     );
   }
@@ -54,7 +59,7 @@ class Thumb extends Component {
 
     return (
       <div>
-        {item.label}
+        <div>{item.label}</div>
         {this.state.srcObject && <video autoPlay src={this.state.srcObject}></video>}
       </div>
     );
