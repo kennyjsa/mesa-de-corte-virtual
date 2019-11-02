@@ -1,0 +1,8 @@
+.video-player{
+    background: #000;
+    height: 100vh;
+    display: flex;
+}
+.video-player video{
+    width: 100%;
+}
